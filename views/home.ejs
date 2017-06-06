@@ -1,0 +1,19 @@
+<html lang='en'>
+	<head>
+		<title> Khoa Pham WEB RTC </title>
+	</head>
+	<body>
+		<h1>Web RTC training</h1>
+		<video id="localStream" width= '300' controls/>
+	</body>
+	<script>
+		navigator.mediaDevices.getUserMedia({ audio: false, video: true})
+		.then(
+			const video = document.getElementById('localStream');
+			video.onloadedmetadata = function(){
+				video.play();
+			}
+		)
+		.catch(err => console.log(err))
+	</script>
+</html>
