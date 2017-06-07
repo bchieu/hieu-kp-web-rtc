@@ -1,5 +1,4 @@
-console.log("10 42");
-
+//console.log("10 42");
 const Peer = require('simple-peer');
 const $ = require('jquery');
 

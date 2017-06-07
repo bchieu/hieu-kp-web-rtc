@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vanpho93/rtc-start-kit.git"
@@ -23,7 +21,7 @@
     "simple-peer": "^8.1.0"
   },
 
-  "script":{
+  "scripts":{
     "start" : "node index.js"
   },
 
