@@ -5442,37 +5442,13 @@ module.exports = __webpack_require__(9).EventEmitter;
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-const Peer = __webpack_require__(8);
-const $ = __webpack_require__(25);
 
-function openStream() {
+function openStream(cb) {
     navigator.mediaDevices.getUserMedia({ audio: false, video: true })
         .then(stream => {
-            const video = document.getElementById('localStream');
-            video.srcObject = stream;
-            video.onloadedmetadata = function () {
-                video.play();
-            }
-            const p = new Peer({ initiator: location.hash === '#1', trickle: false, stream : stream });
-            p.on('signal', token => {
-                $('#txtMysignal').val(JSON.stringify(token));
-            });
-
-            $('#btnConnect').click(() => {
-                const friendSignal = JSON.parse($('#txtFriendSignal').val());
-                p.signal(friendSignal);
-            });
-
-            p.on('stream', friendStream => {
-                const friendVideo = document.getElementById('friendStream');
-                friendVideo.srcObject = friendStream;
-                friendVideo.onloadedmetadata = function () {
-                    friendVideo.play();
-                }
-            });
-            
+            cb(stream);
         })
         .catch(err => console.log(err))
 }
@@ -17045,9 +17021,34 @@ function config (name) {
 console.log("10 42");
 
 const Peer = __webpack_require__(8);
+const $ = __webpack_require__(25);
+
 const openStream = __webpack_require__(15);
 
-openStream();
+openStream(stream => {
+    const video = document.getElementById('localStream');
+    video.srcObject = stream;
+    video.onloadedmetadata = function () {
+        video.play();
+    }
+    const p = new Peer({ initiator: location.hash === '#1', trickle: false, stream: stream });
+    p.on('signal', token => {
+        $('#txtMysignal').val(JSON.stringify(token));
+    });
+
+    $('#btnConnect').click(() => {
+        const friendSignal = JSON.parse($('#txtFriendSignal').val());
+        p.signal(friendSignal);
+    });
+
+    p.on('stream', friendStream => {
+        const friendVideo = document.getElementById('friendStream');
+        friendVideo.srcObject = friendStream;
+        friendVideo.onloadedmetadata = function () {
+            friendVideo.play();
+        }
+    });
+});
 
 // p.on('connect', token=> {
 //    setInterval(()=> p.send(Math.random()),2000);
