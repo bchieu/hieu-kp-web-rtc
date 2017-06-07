@@ -4,7 +4,14 @@
 	</head>
 	<body>
 		<h1>Web RTC training</h1>
-		<video id="localStream" width= '300' controls/>
+		<video id="localStream" width= '300' controls></video>
+		</br>
+		<video id="friendStream" width= '300' controls></video>
+		</br>
+		<label>Connection token</label></br>
+		<textarea name="" id="txtMysignal" cols="100" rows="3"></textarea></br>
+		<input type="text" placeholder="Your friend's token'" id="txtFriendSignal"></input></br>
+		<input type="button" id="btnConnect" value="Connect"></input>
 	</body>
 	<script>
 		// navigator.mediaDevices.getUserMedia({ audio: false, video: true})

@@ -1,6 +1,13 @@
-console.log("hieudenzz");
+console.log("10 42");
 
 const Peer = require('simple-peer');
-const p = new Peer({initiator: location.hash === '#1', trickle: false});
+const openStream = require('./openStream');
 
-p.on('signal',token => console.log(token));
+openStream();
+
+// p.on('connect', token=> {
+//    setInterval(()=> p.send(Math.random()),2000);
+// });
+
+// p.on('data', data => console.log('Nhan Du lieu: ' + data));
+
