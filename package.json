@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
+  "scripts": {
+    "start" : "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vanpho93/rtc-start-kit.git"
@@ -20,11 +22,6 @@
     "express": "^4.15.3",
     "simple-peer": "^8.1.0"
   },
-
-  "scripts":{
-    "start" : "node index.js"
-  },
-
   "devDependencies": {
     "jquery": "^3.2.1"
   }
